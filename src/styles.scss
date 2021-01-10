@@ -1,0 +1,169 @@
+$primaryColor: rgba(0, 0, 0, 0);
+$secondaryColor: rgba(0, 0, 0, 0);
+$textColor: rgba(0, 0, 0, 0);
+
+
+
+
+.container {
+    display: grid;
+    //background-color: $container-color;
+    grid-template-columns: 40% 60%;
+    grid-template-rows: 1fr;
+    min-height: 100vh;
+}
+
+.branding {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: max($numbers: 70%) 30%;
+    
+    //background-image: url("./images/Base.png");
+    //background-repeat: no-repeat;
+
+    &__illustration {
+        content: url("./images/Illustration-1.png");
+    };
+}
+
+/*.main {
+    display: grid;
+    grid-template-columns: 80%;  
+    margin: 0 auto;  
+}*/
+
+
+
+.benefits-details {
+    display:grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr 1fr;
+
+}
+
+.main{
+    display:grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr;
+    justify-content: center;
+}
+
+.item-a{
+    display:grid;
+    grid-template-columns: repeat(4, auto);
+    grid-template-rows: auto;
+    row-gap: 10px;
+    column-gap: 10px;
+
+    &__health-card{
+        padding: 10px;
+        border: 1px solid;
+        border-radius: 10px;
+    }
+}
+
+
+.wizard-header{
+    display: flex;
+    flex-direction: column;
+
+    &__title{
+        font-size: 2.0rem;
+        &--highlighted{
+            color: #2C83EB;
+        }
+    }
+
+    &__subTitle{
+        font-size: 1.0rem;
+        color:#6C7282;
+    }
+}    
+
+
+body {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  #base__image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 40vw;
+    height: 75vh;
+    z-index: -99;
+  }
+  #second__image {
+    position: fixed;
+    left: 35%;
+    transform: translateX(-50%);
+    width: 350px;
+    height: 70%;
+    z-index: -98;
+  }
+  main {
+    height: 100vh;
+    width: 100vw;
+    max-height: 100vh;
+    display: grid;
+    grid-template-columns: 7fr 5fr;
+    .section-left {
+      color: white;
+      .section-left__container {
+        display: grid;
+        grid-template-columns: 10rem auto auto;
+        border: 2px solid black;
+        height: 75vh;
+        .section-left__container_content {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          width: 550px;
+          border: 1px solid red;
+          .section-left__container__title {
+            font-size: 3.5rem;
+            width: 50%;
+          }
+          .section-left__container__item {
+            font-size: 2.5rem;
+          }
+        }
+      }
+    }
+    .section-right {
+        .section-right__container{
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr;
+            height: 99vh;
+            .section-right__container_content {
+                display: grid;
+                margin: 80px 40px;
+                grid-template-columns: 1fr;
+                grid-template-rows: auto 2fr 1fr;
+                flex-direction: column;
+                .section_right__container_header {
+                }
+                .section_right__container_body {
+                    display: grid;
+                    grid-template-rows: 1fr;
+                    grid-template-rows: repeat(5, auto);
+                }
+                .section_right__container_footer {
+                    display:grid;
+                    grid-template-rows: 1fr;
+                    grid-template-columns: 7fr 5fr;
+                    button{
+                        width: 100%;
+                        padding: 15px;
+                        border-radius: 5px;
+                        color: white;
+                        background: #2C83EB;
+                    }
+                }
+            }
+        }
+        
+    }
+  }
+}

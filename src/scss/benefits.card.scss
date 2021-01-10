@@ -1,0 +1,94 @@
+@import './variables.scss';
+
+$trikethroughColor: #E9EBF2;
+
+.benefit-card {
+    margin: 30px 0px;
+    display:grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    border: 2px solid #F0F2FA;
+    border-radius: 10px;
+    .card-header{
+        display: flex;
+        background-color: #F0F2FA;
+        padding: 5px 0px;
+        &__title{
+            font-size: 0.8rem;
+            margin: 0 auto;
+        }
+    }
+    .card-body{
+        display: grid;
+        grid-template-rows: 1fr;
+        grid-template-rows: auto 1fr;
+        .card-coverage{
+            padding:10px;
+            display: grid;
+            grid-template-rows: 1fr;
+            grid-template-columns: 8fr 4fr;
+            border: 0px solid #F0F2FA;
+            box-shadow: 0px 5px 0px -4px #F0F2FA;
+            .card-coverage-description{
+                margin: 20px 10px 20px;
+                display: flex;
+                flex-direction: column;
+                &__title{
+                    font-size: 0.8rem;
+                }
+                &__rate{
+                    font-size: 1.5rem;
+                }
+                &__badge{
+                    span{
+                        background: #84BF5A;
+                        color: #FFF;
+                        border-radius: 8px;
+                        padding: 2px;
+                        font-size: 0.6rem;
+                        height: 100%;
+                        width: auto;
+                    }
+                }
+            }
+            .card-coverage-thumbnail{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 0px solid #F0F2FA; 
+                box-shadow: -5px 1px 0px -4px #F0F2FA;
+                img{
+                    object-fit: contain;
+                    max-height: 60px;
+                }
+            }
+        }
+        .card-details{
+            padding: 10px;
+            .card-details-list{
+                list-style: none;
+                padding: 0;
+                &__item{
+                    margin: 10px 0px;
+                    span{
+                        color: $primaryColor;
+                        width:16px; 
+                        height:16px;
+                        display: inline-block;
+                    }
+                    .parentheses{
+                        font-size: 0.7rem;
+                        padding: 3px;
+                    }
+                    &--trikethrough{
+                        span{
+                            color: $trikethroughColor;
+                        };
+                        color: $trikethroughColor;
+                        text-decoration: line-through;
+                    } 
+                }
+            }
+        }
+    }
+}

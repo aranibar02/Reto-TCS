@@ -1,0 +1,23 @@
+@import './variables.scss';
+
+.input-container {
+    display:flex;
+    height: 50px;
+    flex-direction: column;
+    border: 1px solid #daddeb;
+    border-radius: 5px;
+    margin: 5px 0px;
+    label{
+        padding: 0px 10px;
+        color:$secondaryTextColor;
+        font-size: $smallFontSize;
+    };
+
+    input{
+        color: $primaryTextColor;
+        height: 100%;
+        border: none;
+        outline: none;
+        padding: 0px 10px;
+    };
+}

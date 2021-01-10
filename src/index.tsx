@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
+import './styles.scss';
+import './scss/card.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 

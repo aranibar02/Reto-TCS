@@ -1,0 +1,31 @@
+@import './variables.scss';
+
+.accordion-container{
+    .accordion-container-header{
+        &__title{
+            &--highlighted{
+                display: block;
+                color: $primaryColor;
+            }
+        }
+    }
+}
+
+.accordion{
+    &__indicator{
+        position: absolute;
+        padding: 0px 10px;
+        right: 0;
+        color: #2C83EB;
+    }
+    &__header{
+        display: flex;
+        position: relative;
+        padding: 15px 0;
+        border-top: 1px solid $secondaryTextColor;
+        border-bottom: 1px solid $secondaryTextColor;
+    }
+    &__content{
+
+    }
+}

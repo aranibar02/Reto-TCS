@@ -1,0 +1,27 @@
+@import './variables.scss';
+
+$disabledColor: #F0F2FA;
+$textColor: #D6DAEA;
+
+.button-next{
+    border:none;
+    border-radius: 5px;
+    text-transform: capitalize;
+    height: 40px;
+    padding: 0px 20px;
+    background-color: #2C83EB;
+    color: #FFFFFF;
+    &--disabled{
+        border-radius: 5px;
+        border:5px;
+        text-transform: capitalize;
+        height: 40px;
+        background-color: $disabledColor;
+        border:none;
+        color: $textColor;
+        padding: 0px 20px;
+    };
+    &__icon{
+        margin: 0px 8px;
+    }
+}

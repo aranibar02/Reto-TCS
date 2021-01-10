@@ -1,0 +1,59 @@
+@import 'variables.scss';
+
+.one-step-container{
+    display:grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    .container-header{
+        display:flex;
+        flex-direction: row;
+        color: $secondaryTextColor;
+        &__back{
+            border: 1.5px solid $primaryColor;
+            background: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            span{
+                position: absolute;
+                top: -2px;
+                margin: 0 auto;
+                color: $primaryColor;
+                
+            }
+        }
+        &__counter{
+            font-size: 0.8rem;
+            margin: auto 10px;
+            &--highlighted{
+                color: $primaryColor;
+            }            
+        }
+    }
+    .container-body{
+        row-gap: 30px;
+        display: grid;
+        margin: 30px;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(3, fr);
+        &__header{
+        };
+        &__main-content{
+            display: flex;
+            flex-direction: column;
+            .button_container-left{
+                margin: 30px 0px;
+                display: flex;
+                justify-content: flex-start;
+            }
+            .button_container-right{
+                margin: 30px 0px;
+                display: flex;
+                justify-content: flex-end;
+            }
+        };
+    }
+}
