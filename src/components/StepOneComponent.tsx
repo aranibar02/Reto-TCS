@@ -37,11 +37,12 @@ const StepOneComponent = ({currentStep, handleNext, updateUser, handleBack, user
                 <div className="container-body__header">
                     <WizardHeader
                         title = {"Hola, "} 
-                        highlightedTitle = "Pepito" 
+                        highlightedTitle = {user.firstname} 
                         subTitle = "Valida que los datos sean correctos"/>
                 </div>
                 <div className="container-body__main-content">
                     <div>Datos personales del titular</div>
+                    <BasicInput name="dni" placeHolder="Nro. de documento" value={user.dni} type="text" onChange={updateUser}/>
                     <BasicInput name="firstname" placeHolder="Nombres" value={user.firstname} type="text" onChange={updateUser}/>
                     <BasicInput name="paternalSurname" placeHolder="Apellido Paterno" value={user.paternalSurname} type="text" onChange={updateUser}/>
                     <BasicInput name="maternalSurname" placeHolder="Apellido Materno" value={user.maternalSurname} type="text" onChange={updateUser}/>
@@ -50,26 +51,30 @@ const StepOneComponent = ({currentStep, handleNext, updateUser, handleBack, user
                         Genero
                         <RadioButton 
                             name="gender" 
-                            value="M" 
+                            value="M"
+                            isChecked={user.gender === "M" ? true : false} 
                             onValueChange = {()=>{}} 
                             description="Masculino"/>
                         <RadioButton 
                             name="gender" 
                             value="F" 
-                            onValueChange = {()=>{}} 
+                            isChecked={user.gender === "F" ? true : false}
+                            onValueChange = {updateUser} 
                             description="Femenino"/>
                     </div>
                     <div className="radio-container">
                         A quien vamos a asegurar?
                         <RadioButton 
                             name="whoInsure" 
-                            value="M" 
-                            onValueChange = {()=>{}} 
+                            value="Me"
+                            isChecked={user.whoInsure === "Me" ? true : false} 
+                            onValueChange = {updateUser} 
                             description="Solo a mi"/>
                         <RadioButton 
                             name="whoInsure" 
-                            value="F" 
-                            onValueChange = {()=>{}} 
+                            value="Family" 
+                            isChecked={user.whoInsure === "Family" ? true : false} 
+                            onValueChange = {updateUser} 
                             description="A mi y a mi familia"/>
                     </div>
                     <div className="button_container-right">

@@ -6,6 +6,8 @@ import HealthPlan from './interfaces/HealthPlan';
 import Base from './images/Base.png';
 
 import Wizard from './components/Wizard';
+import glShield from './images/gl_shield.png';
+import glMobile from './images/gl_mobile.png';
 
 function App() {
   
@@ -16,13 +18,26 @@ function App() {
      <main>
     <div className="section-left">
       <div className="section-left__container">
-        <div></div>
         <div className="section-left__container_content">
           <h1 className="section-left__container__title">Seguro de <strong>Salud</strong></h1>
-          <div className="section-left__container__item">Compralo de manera facil</div>
-          <div className="section-left__container__item">Hasta S/.12 millones de cobertura anual</div>
-          <div className="section-left__container__item">Más de 300 clínicas en todo el Perú</div>
-          <div className="section-left__container__item">&#169; 2021 ;y Company</div>
+          <div style={{
+            display:"flex",
+            flexDirection:"column"
+          }}>
+          <div className="section-left__container__item">
+            <img src={glShield}/>Compralo de manera fácil
+          </div>
+          <div className="section-left__container__item">
+            <img src={glMobile}/> Cotiza y compra tu seguro 100% digital
+            </div>
+          <div className="section-left__container__item">
+            <img src={glShield}/>Hasta S/.12 millones de cobertura anual
+            </div>
+          <div className="section-left__container__item">
+            <img src={glMobile}/>Más de 300 clínicas en todo el Perú
+            </div>
+          <div className="section-left__container__item--site-title">&#169; 2021 Rimac Seguros y Reaseguros</div>
+          </div>
         </div>
         <div></div>
       </div>
@@ -34,24 +49,6 @@ function App() {
         </div>
         <div className="section_right__container_body">
             <Wizard/>
-            {/*<StepTwoComponent healthPlans = {healthPlans}/>*/}
-          {/*<BasicInput name="dni" placeHolder="Nro de Documento" value="" type="text" onChange = {()=>{}}/>
-          <BasicInput name="birthday" placeHolder="Fecha de Nacimiento" value="" type="text" onChange = {()=>{}}/>
-          <BasicInput name="cellphone" placeHolder="Celular" value="" type="text" onChange = {()=>{}}/>  
-          <div>
-            <label className="container-checkbox">
-            Acepto la Politica de Proteccion de Datos Personales y los Terminos y Condicioness
-              <input type="checkbox"/>
-              <span className="checkmark"></span>
-            </label>
-          </div>
-          <div>
-          <label className="container-checkbox">
-          Acepto la Politica de Proteccion de Datos Personales y los Terminos y Condicioness
-              <input type="checkbox"/>
-              <span className="checkmark"></span>
-            </label>
-          </div>*/}
         </div>
       </div>
       </div>

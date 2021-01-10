@@ -9,7 +9,7 @@ import StepFourComponent from './StepFourComponent';
 
 
 const Wizard = ({}) => {
-    const [step, setStep] = useState<number>(3);
+    const [step, setStep] = useState<number>(0);
     const [user, setUser] = useState<User>({
         dni: "",
         firstname: "",
@@ -42,7 +42,7 @@ const Wizard = ({}) => {
 
     useEffect(() => {
         fetchUser();
-    }, [step]);
+    }, []);
 
 
 

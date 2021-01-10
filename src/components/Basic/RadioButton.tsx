@@ -6,12 +6,21 @@ type PropTypes = {
     value: string,
     onValueChange: Function,
     description: string,
+    isChecked: boolean,
 }
 
-const RadioButton = ({name, value, onValueChange, description} : PropTypes) => {
+const RadioButton = ({name, value, onValueChange, description, isChecked} : PropTypes) => {
+
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const newValue = e.target.value;
+        const name = e.target.name;
+        onValueChange(name, newValue);
+    };
+
     return(
     <label>
-        <input type="radio" name= {name} value= {value}/>
+        <input type="radio" name= {name} value= {value} checked={isChecked} onChange={handleChange}/>
     <span>{description}</span>
     </label>
     );
