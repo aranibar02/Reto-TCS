@@ -6,10 +6,11 @@ type BasicInputProps = {
     placeHolder: string,
     value: string | number,
     type: string,
-    onChange: Function
+    onChange: Function,
+    validate: string | null,
 }
 
-const BasicInput = ({name, placeHolder, value, type, onChange} : BasicInputProps) => {
+const BasicInput = ({name, placeHolder, value, type, onChange, validate} : BasicInputProps) => {
 
     const [isFocused, setIsFocused] = useState<Boolean>(value === "" ? false : true);
 
@@ -20,6 +21,7 @@ const BasicInput = ({name, placeHolder, value, type, onChange} : BasicInputProps
     }
 
     return (
+        <div>
         <div className="input-container">
             {isFocused 
                 ? (<label>{placeHolder}</label>) 
@@ -32,6 +34,8 @@ const BasicInput = ({name, placeHolder, value, type, onChange} : BasicInputProps
                 placeholder={placeHolder} 
                 value={value}
             />
+        </div>
+        {validate && <span style={{fontSize:"8px", color: "red", position: "relative", top: "-10px"}}>{validate}</span>}
         </div>
     )
 };

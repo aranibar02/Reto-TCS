@@ -6,10 +6,13 @@
     .card{
         display: flex;
         flex-direction: column;
-        .selected{
+        &.selected{
             border: 2px solid #84BF5A;
         }
         &__dot{
+            &.hidden{
+                border: none;
+            }
             width: 15px;
             height: 15px;
             border: 1px solid;

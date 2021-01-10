@@ -23,7 +23,7 @@ const HealthPlanCard = ({healthPlan, onClickEvent, index, isSelected, UpdateInde
     return(
         <div className={!isSelected ? "card" : "card selected"} onClick={handleClick}>
                 
-                <div className="card__dot">
+                <div className={!isSelected ? "card__dot" : "card__dot hidden"}>
                     {isSelected && <img src={glCorrect}/>}
                 </div>
                 <div className="card__title">{healthPlan.name}</div>

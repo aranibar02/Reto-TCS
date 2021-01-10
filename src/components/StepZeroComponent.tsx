@@ -6,6 +6,8 @@ import BasicInput from './BasicInput';
 import Button from './Basic/Button';
 import Checkbox from './Basic/Checkbox';
 import User from '../interfaces/User';
+import {blankValidation} from '../util';
+
 
 type PropTypes = {
     currentStep: number,
@@ -15,22 +17,50 @@ type PropTypes = {
     user: User,
 }
 
+type Errors = {
+    dni: string | null,
+    birthdate: string | null,
+    cellphone: string | null,
+}
+
+
+
 const StepZeroComponent = ({currentStep, handleNext, handleBack, updateUser, user} : PropTypes) => {
 
-    const [termsAndConditions, setTermsAndConditions] = useState<string>("");
-    const [commercialCommunications, setCommercialCommunications] = useState<string>("");
+    const [termsAndConditions, setTermsAndConditions] = useState<boolean>(false);
+    const [commercialCommunications, setCommercialCommunications] = useState<boolean>(false);
     const [isDone, setIsDone] = useState<boolean>(false);
+    const [errors, setErrors] = useState<Errors>({dni:null, birthdate: null, cellphone: null});
 
+    const updateTermsAndConditions = (value: boolean) => {
+        setTermsAndConditions(value);
+    };
+
+    const updateCommercialCommunications = (value: boolean) => {
+        console.log(value);
+        setCommercialCommunications(value)
+    }
+
+    useEffect(()=>{
+        setErrors({dni:null, birthdate: null, cellphone: null});
+    }, [user]);
 
     const handleStart = (e: any) => {
-        if( user.dni === "" &&
-            user.birthdate === "" &&
-            user.cellphone === "" &&
-            termsAndConditions === "" &&
-            commercialCommunications === ""){
+        if( user.dni === ""   ||
+            user.birthdate === "" ||
+            user.cellphone === "" ||
+            !termsAndConditions ||
+            !commercialCommunications){
+                const validate = {
+                    dni: blankValidation('Dni', user.dni),
+                    birthdate: blankValidation('Fecha de nacimiento', user.birthdate),
+                    cellphone: blankValidation('Celular', user.cellphone)
+                };
+                console.log(validate);
+                setErrors({...validate});
                 setIsDone(false);
-                return;
             }else{
+                console.log("wdwe");
                 setIsDone(true);
                 handleNext(e);
             }
@@ -46,18 +76,22 @@ const StepZeroComponent = ({currentStep, handleNext, handleBack, updateUser, use
                         subTitle = "Ingresa los datos para comenzar"/>
                 </div>
                 <div className="container-body__main-content">
-                    <BasicInput name="dni" placeHolder="Nro de Documento" value={user.dni} type="text" onChange={updateUser}/>
-                    <BasicInput name="birthdate" placeHolder="Fecha de nacimiento" value={user.birthdate} type="text" onChange={updateUser}/>
-                    <BasicInput name="cellphone" placeHolder="Celular" value={user.cellphone} type="text" onChange={updateUser}/>
-                    <Checkbox name="termsAndConditions" value={""} 
+                    <BasicInput name="dni" placeHolder="Nro de Documento" value={user.dni} type="text" onChange={updateUser} validate={errors.dni}/>
+                    <BasicInput name="birthdate" placeHolder="Fecha de nacimiento" value={user.birthdate} type="text" onChange={updateUser} validate={errors.birthdate}/>
+                    <BasicInput name="cellphone" placeHolder="Celular" value={user.cellphone} type="text" onChange={updateUser} validate={errors.cellphone}/>
+                    <Checkbox name="termsAndConditions" value={""}
+                        onValueChange={updateTermsAndConditions}
+                        isChecked = {termsAndConditions} 
                         description="Acepto la "
-                        underlined="Politica de Proteccion de Datos Personales y los Terminos y Condiciones"/>
-                    <Checkbox name="commercialCommunications" value={""} 
+                        underlined="Política de Protección de Datos Personales y los Términos y Condiciones"/>
+                    <Checkbox name="commercialCommunications" value={""}
+                        onValueChange={updateCommercialCommunications} 
+                        isChecked = {commercialCommunications}
                         description="Acepto la"
-                        underlined="Politica de Envio de Comunicaciones Comerciales"
+                        underlined="Política de Envío de Comunicaciones Comerciales"
                         />  
                     <div className="button_container-left">
-                        <Button text="COMENCEMOS" icon="" onClickEvent={handleStart} isDisabled={isDone ? false : true}/>
+                        <Button text="COMENCEMOS" icon="" onClickEvent={handleStart} isDisabled={false}/>
                     </div>    
                 </div>
             </div>

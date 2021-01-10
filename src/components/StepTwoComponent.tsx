@@ -27,6 +27,12 @@ const StepTwoComponent = ({currentStep, handleNext, handleBack, updateUser, user
         setCurrentHealthPlan(e ? e : healthPlans[0]);
     }
 
+    //Save User on localStorage
+    const handleSaveUser = (e: React.MouseEvent) => {
+        localStorage.setItem('user', JSON.stringify(user));
+        handleNext(e);
+    } 
+
     return(
 
         <div className="one-step-container">
@@ -44,7 +50,7 @@ const StepTwoComponent = ({currentStep, handleNext, handleBack, updateUser, user
             <div className="container-body__header">
                 <WizardHeader
                     title = {"Elige, "} 
-                    highlightedTitle = "tu proteccion" 
+                    highlightedTitle = "tu protección" 
                     subTitle = "Selecciona tu plan de salud ideal"/>
             </div>
             <div className="container-body__main-content">
@@ -76,7 +82,7 @@ const StepTwoComponent = ({currentStep, handleNext, handleBack, updateUser, user
                 })}
               </div> 
                 <div className="button_container-right">
-                    <Button text="COMPRAR PLAN" icon="" onClickEvent={handleNext} isDisabled={false}/>
+                    <Button text="COMPRAR PLAN" icon="" onClickEvent={handleSaveUser} isDisabled={false}/>
                 </div>    
             </div>
         </div>
